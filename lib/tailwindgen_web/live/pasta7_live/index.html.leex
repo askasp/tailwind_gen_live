@@ -1,0 +1,58 @@
+
+<div class="p-4 lg:p-10" >
+            <div class="text-xl font-bold mt-6">
+        <%= gettext "Listing %{name}", name: "Pasta7s" %>
+            </div>
+
+<%= if @live_action in [:new, :edit] do %>
+<%= live_modal @socket, TailwindgenWeb.Pasta7Live.FormComponent,
+id: @pasta7.id || :new,
+title: @page_title,
+action: @live_action,
+pasta7: @pasta7,
+return_to: Routes.pasta7_index_path(@socket, :index) %>
+<% end %>
+
+<%= for {pasta7, counter} <- Enum.with_index(@pasta7s) do %>
+<div class="card lg:card-side bordered">
+<figure>
+    <img src="https://picsum.photos/id/1005/400/250">
+</figure>
+<div class="card-body">
+    
+    <b class="text-sm whitespace-nowrap "> Title: </b>
+    <p>
+        <%= pasta7.title %>
+    </p>
+    
+    <b class="text-sm whitespace-nowrap "> Age: </b>
+    <p>
+        <%= pasta7.age %>
+    </p>
+    
+    <div class="card-actions">
+        <%= live_redirect to: Routes.pasta7_show_path(@socket, :show, pasta7)  do %>
+        <button class="btn btn-info"> Show </button>
+        <% end %>
+
+        <%= live_patch to: Routes.pasta7_index_path(@socket, :edit, pasta7) do %>
+        <button class="btn btn-warning">Edit </button>
+        <% end %>
+
+        <%= link to: "#", phx_click: "delete", phx_value_id: pasta7.id, data: [confirm: "Are you sure?"] do %>
+        <button class="btn btn-error">Delete </button>
+        <% end %>
+    </div>
+</div>
+
+    <% end %>
+
+</div>
+
+    <div class="py-2 align-middle inline-block min-w-full px-4 md:px-8">
+        <%= live_patch to: Routes.pasta7_index_path(@socket, :new)  do %>
+        <button class="btn btn-primary"> <%= gettext "New %{name}", name: "Pasta7" %> </button>
+        <% end %>
+    </div>
+
+</div>

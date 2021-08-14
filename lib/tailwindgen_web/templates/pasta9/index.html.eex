@@ -1,0 +1,30 @@
+<h1>Listing Pasta9s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Age</th>
+      <th>Stuff</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for pasta9 <- @pasta9s do %>
+    <tr>
+      <td><%= pasta9.title %></td>
+      <td><%= pasta9.age %></td>
+      <td><%= pasta9.stuff %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.pasta9_path(@conn, :show, pasta9) %></span>
+        <span><%= link "Edit", to: Routes.pasta9_path(@conn, :edit, pasta9) %></span>
+        <span><%= link "Delete", to: Routes.pasta9_path(@conn, :delete, pasta9), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Pasta9", to: Routes.pasta9_path(@conn, :new) %></span>

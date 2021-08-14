@@ -1,0 +1,23 @@
+<h1>Show Pasta9</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @pasta9.title %>
+  </li>
+
+  <li>
+    <strong>Age:</strong>
+    <%= @pasta9.age %>
+  </li>
+
+  <li>
+    <strong>Stuff:</strong>
+    <%= @pasta9.stuff %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.pasta9_path(@conn, :edit, @pasta9) %></span>
+<span><%= link "Back", to: Routes.pasta9_path(@conn, :index) %></span>

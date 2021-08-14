@@ -1,0 +1,36 @@
+<h1>Show Postto</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, TailwindgenWeb.PosttoLive.FormComponent,
+    id: @postto.id,
+    title: @page_title,
+    action: @live_action,
+    postto: @postto,
+    return_to: Routes.postto_show_path(@socket, :show, @postto) %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @postto.title %>
+  </li>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @postto.body %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.postto_show_path(@socket, :edit, @postto), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.postto_index_path(@socket, :index) %></span>
