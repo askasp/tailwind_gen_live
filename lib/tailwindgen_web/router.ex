@@ -145,8 +145,35 @@ defmodule TailwindgenWeb.Router do
     live "/pasta8s/:id/show/edit", Pasta8Live.Show, :edit
     resources "/pasta9s", Pasta9Controller
 
+    live "/ts10s", Ts10Live.Index, :index
+    live "/ts10s/new", Ts10Live.Index, :new
+    live "/ts10s/:id/edit", Ts10Live.Index, :edit
+
+    live "/ts10s/:id", Ts10Live.Show, :show
+    live "/ts10s/:id/show/edit", Ts10Live.Show, :edit
+
+    live "/ts11s", Ts11Live.Index, :index
+    live "/ts11s/new", Ts11Live.Index, :new
+    live "/ts11s/:id/edit", Ts11Live.Index, :edit
+
+    live "/ts11s/:id", Ts11Live.Show, :show
+    live "/ts11s/:id/show/edit", Ts11Live.Show, :edit
+
 
     live "/", PageLive, :index
+
+  live "/ts12s", Ts12Live.Index, :index
+    live "/ts12s/new", Ts12Live.Index, :new
+    live "/ts12s/:id/edit", Ts12Live.Index, :edit
+
+    live "/ts12s/:id", Ts12Live.Show, :show
+    live "/ts12s/:id/show/edit", Ts12Live.Show, :edit
+    live "/ts13s", Ts13Live.Index, :index
+    live "/ts13s/new", Ts13Live.Index, :new
+    live "/ts13s/:id/edit", Ts13Live.Index, :edit
+
+    live "/ts13s/:id", Ts13Live.Show, :show
+    live "/ts13s/:id/show/edit", Ts13Live.Show, :edit
   end
 
   # Other scopes may use custom stacks.

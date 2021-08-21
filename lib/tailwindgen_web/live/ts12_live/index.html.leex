@@ -1,0 +1,71 @@
+
+
+
+
+
+
+
+<div class="p-4 lg:p-10" >
+            <div class="text-xl font-bold mt-6">
+        <%= gettext "Listing %{name}", name: "Ts12s" %>
+            </div>
+
+
+
+<%= if @live_action in [:new, :edit] do %>
+<%= live_modal @socket, TailwindgenWeb.Ts12Live.FormComponent,
+id: @ts12.id || :new,
+title: @page_title,
+action: @live_action,
+ts12: @ts12,
+return_to: Routes.ts12_index_path(@socket, :index) %>
+<% end %>
+
+<%= for {ts12, counter} <- Enum.with_index(@ts12s) do %>
+<div class="card lg:card-side bordered">
+<figure>
+    <img src="https://picsum.photos/id/1005/400/250">
+</figure>
+<div class="card-body">
+    
+    <b class="text-sm whitespace-nowrap "> Age: </b>
+    <p>
+        <%= ts12.age %>
+    </p>
+    
+    <b class="text-sm whitespace-nowrap "> Title: </b>
+    <p>
+        <%= ts12.title %>
+    </p>
+    
+    <b class="text-sm whitespace-nowrap "> Body: </b>
+    <p>
+        <%= ts12.body %>
+    </p>
+    
+    <div class="card-actions">
+        <%= live_redirect to: Routes.ts12_show_path(@socket, :show, ts12)  do %>
+        <button class="btn btn-info"> Show </button>
+        <% end %>
+
+        <%= live_patch to: Routes.ts12_index_path(@socket, :edit, ts12) do %>
+        <button class="btn btn-warning">Edit </button>
+        <% end %>
+
+        <%= link to: "#", phx_click: "delete", phx_value_id: ts12.id, data: [confirm: "Are you sure?"] do %>
+        <button class="btn btn-error">Delete </button>
+        <% end %>
+    </div>
+</div>
+
+    <% end %>
+
+</div>
+
+    <div class="py-2 align-middle inline-block min-w-full px-4 md:px-8">
+        <%= live_patch to: Routes.ts12_index_path(@socket, :new)  do %>
+        <button class="btn btn-primary"> <%= gettext "New %{name}", name: "Ts12" %> </button>
+        <% end %>
+    </div>
+
+</div>

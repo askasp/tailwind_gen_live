@@ -5,12 +5,6 @@
 
 @tailwind utilities;
 
-.mytailwindform input{
-  @apply  mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md
-}
-.mytailwindform label {
-  @apply block text-sm font-medium text-gray-700 font-bold
-}
 
 // @import "./phoenix.css";
 
@@ -96,8 +90,23 @@
 .alert:empty {
   display: none;
 }
+
+
 .invalid-feedback {
-  color: #a94442;
-  display: block;
-  margin: -1rem 0 2rem;
+    @apply text-error label-text-alt
 }
+
+.mydaisyform input{
+    @apply input input-primary
+}
+.mydaisyform label{
+    @apply label-text
+}
+.myerrortag label{
+    @apply label-text-alt
+}
+
+.mydaisyform textarea{
+    @apply textarea h-24 textarea-bordered textarea-primary
+}
+
